@@ -1,0 +1,60 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply from: "$rootProject.rootDir/dependencies-versions.gradle"
+
+ext.addConstantTo = { target, name, constantValue ->
+    def scheme = "panintitestapp://"
+    def nameUp = name.toUpperCase()
+    def constantName = "DEEPLINK_HOST_" + nameUp
+    target.manifestPlaceholders += [(constantName): constantValue]
+    target.buildConfigField "String", "${constantName}", "\"${scheme + constantValue}\""
+}
+
+android {
+    compileSdkVersion versions.compileSdkVersion
+    defaultConfig {
+        minSdkVersion versions.minSdkVersion
+        targetSdkVersion versions.targetSdkVersion
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        staging {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            debuggable = true
+            signingConfig signingConfigs.debug
+        }
+
+        dev {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            debuggable = true
+            signingConfig signingConfigs.debug
+        }
+    }
+}
+
+androidExtensions {
+    experimental = true
+}
+
+dependencies {
+    implementation libraries.kotlin
+}
+
+configurations.all {
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        def requested = details.requested
+        if (requested.group == 'org.jetbrains.kotlin') {
+            details.useVersion versions.kotlin
+        } else if (requested.group == 'com.android.support') {
+            details.useVersion versions.supportLibraryVersion
+        }
+    }
+}

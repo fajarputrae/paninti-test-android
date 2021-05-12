@@ -1,0 +1,5 @@
+include ':network'
+include ':base'
+include ':home'
+include ':app'
+rootProject.name = "Android Test App"
