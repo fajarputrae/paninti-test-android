@@ -1,0 +1,30 @@
+apply from: "$rootProject.rootDir/dependencies-common.gradle"
+
+dependencies {
+    implementation project(Modules.network)
+
+    api libraries.appCompat
+    api libraries.constraintLayout
+    api libraries.cardview
+    api libraries.recyclerview
+    api libraries.coroutines
+    api libraries.coroutinesRx
+    api libraries.timber
+    api libraries.glide
+    kapt 'com.github.bumptech.glide:compiler:4.11.0'
+    api libraries.gson
+
+    api AndroidKTX.core
+    api AndroidKTX.fragment
+    api ankoLib.ankoSdk
+    api ankoLib.appcompact
+    api ankoLib.commons
+    api ankoLib.design
+    api ankoLib.constrainLayout
+    api ankoLib.cardView
+    api ankoLib.recycleView
+
+    testImplementation test.jUnit
+    androidTestImplementation test.runner
+    androidTestImplementation test.espresso
+}

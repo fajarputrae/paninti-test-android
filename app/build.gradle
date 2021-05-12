@@ -1,0 +1,66 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply from: "$rootProject.rootDir/dependencies-versions.gradle"
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+    defaultConfig {
+        applicationId "com.paninti.testapp"
+        minSdkVersion versions.minSdkVersion
+        targetSdkVersion versions.targetSdkVersion
+        versionCode release.versionCode
+        versionName release.versionName
+    }
+    buildTypes {
+        def date = new Date().format('yyMM.ddHHmm')
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        staging {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            debuggable = true
+            versionNameSuffix = ".$date-staging"
+            signingConfig signingConfigs.debug
+        }
+
+        dev {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            debuggable = true
+            versionNameSuffix = ".$date-dev"
+            signingConfig signingConfigs.debug
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+}
+
+dependencies {
+    implementation project(':base')
+    implementation project(':network')
+    implementation project(':home')
+
+
+    implementation libraries.appCompat
+    implementation libraries.constraintLayout
+    implementation libraries.kotlin
+    implementation libraries.koinViewModel
+    implementation libraries.koin
+    implementation libraries.hawk
+
+}

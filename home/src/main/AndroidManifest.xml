@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.paninti.feature.home">
+
+    <permission android:name="android.permission.INTERNET" />
+
+    <application>
+        <activity
+            android:name=".MainAct"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Design.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="home"
+                    android:scheme="panintitestapp" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

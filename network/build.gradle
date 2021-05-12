@@ -1,0 +1,32 @@
+apply from: "$rootProject.rootDir/dependencies-common.gradle"
+
+android {
+    buildTypes {
+        debug {
+            buildConfigField 'String', 'BASE_URL', '"https://restcountries.eu/rest"'
+            multiDexKeepProguard file('multidex-config.pro')
+        }
+        release {
+            buildConfigField 'String', 'BASE_URL', '"https://restcountries.eu/rest"'
+            multiDexKeepProguard file('multidex-config.pro')
+        }
+
+        staging {
+            buildConfigField 'String', 'BASE_URL', '"https://restcountries.eu/rest"'
+            multiDexKeepProguard file('multidex-config.pro')
+        }
+
+        dev {
+            buildConfigField 'String', 'BASE_URL', '"https://restcountries.eu/rest"'
+            multiDexKeepProguard file('multidex-config.pro')
+        }
+    }
+}
+dependencies {
+    api libraries.retrofit
+    api libraries.coroutines
+    api libraries.koin
+
+    implementation libraries.loggingInt
+    implementation libraries.gsonConverter
+}
