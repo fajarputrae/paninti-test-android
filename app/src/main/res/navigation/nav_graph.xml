@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.paninti.androidtestapp.ui.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_nationDetailFragment"
+            app:destination="@id/nationDetailFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_homeFragment_to_bottomSheet"
+            app:destination="@id/bottomSheetFilterFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nationDetailFragment"
+        android:name="com.paninti.androidtestapp.ui.NationDetailFragment"
+        android:label="fragment_nation_detail"
+        tools:layout="@layout/fragment_nation_detail" >
+        <argument
+            android:name="nationInformation"
+            app:argType="com.paninti.androidtestapp.repository.AllResponse" />
+    </fragment>
+
+    <dialog
+        android:id="@+id/bottomSheetFilterFragment"
+        android:name="com.paninti.androidtestapp.ui.BottomSheetFilterFragment"
+        android:label="bottom_sheet_filter"
+        tools:layout="@layout/layout_bottom_sheet_filter">
+        <action
+            android:id="@+id/action_bottomSheet_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@+id/homeFragment" />
+        <argument
+            android:name="filterList"
+            app:argType="com.paninti.androidtestapp.repository.FilterList" />
+    </dialog>
+
+</navigation>

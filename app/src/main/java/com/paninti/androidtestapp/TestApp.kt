@@ -2,7 +2,7 @@ package com.paninti.androidtestapp
 
 import android.app.Application
 import com.orhanobut.hawk.Hawk
-import com.paninti.feature.home.di.mainModule
+import com.paninti.androidtestapp.di.homeModule
 import com.paninti.lib.network.di.networkModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
@@ -30,7 +30,7 @@ class TestApp : Application() {
     private fun setupKoin() {
         startKoin {
             androidContext(this@TestApp)
-            modules(networkModule + mainModule)
+            modules(networkModule + homeModule)
         }
     }
 

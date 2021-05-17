@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
+apply plugin: "kotlin-parcelize"
+apply plugin: "androidx.navigation.safeargs.kotlin"
 apply from: "$rootProject.rootDir/dependencies-versions.gradle"
 
 android {
@@ -48,13 +49,15 @@ android {
         jvmTarget = "1.8"
     }
 
+    viewBinding {
+        enabled = true
+    }
 }
 
 dependencies {
     implementation project(':base')
+    implementation project(':common')
     implementation project(':network')
-    implementation project(':home')
-
 
     implementation libraries.appCompat
     implementation libraries.constraintLayout
@@ -63,4 +66,12 @@ dependencies {
     implementation libraries.koin
     implementation libraries.hawk
 
+    //navigationPart
+    implementation navigationLib.ui
+    implementation navigationLib.fragment
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+}
+
+repositories {
+    mavenCentral()
 }

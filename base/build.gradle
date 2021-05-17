@@ -11,6 +11,7 @@ dependencies {
     api libraries.coroutinesRx
     api libraries.timber
     api libraries.glide
+    api libraries.glideToVectorYou
     kapt 'com.github.bumptech.glide:compiler:4.11.0'
     api libraries.gson
 
@@ -27,4 +28,8 @@ dependencies {
     testImplementation test.jUnit
     androidTestImplementation test.runner
     androidTestImplementation test.espresso
+
+}
+repositories {
+    mavenCentral()
 }
