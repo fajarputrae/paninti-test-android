@@ -1,23 +1,24 @@
 apply from: "$rootProject.rootDir/dependencies-common.gradle"
+apply plugin: 'kotlin-android'
 
 android {
     buildTypes {
         debug {
-            buildConfigField 'String', 'BASE_URL', '"https://restcountries.eu/rest"'
+            buildConfigField 'String', 'BASE_URL', '"https://restcountries.eu/rest/"'
             multiDexKeepProguard file('multidex-config.pro')
         }
         release {
-            buildConfigField 'String', 'BASE_URL', '"https://restcountries.eu/rest"'
+            buildConfigField 'String', 'BASE_URL', '"https://restcountries.eu/rest/"'
             multiDexKeepProguard file('multidex-config.pro')
         }
 
         staging {
-            buildConfigField 'String', 'BASE_URL', '"https://restcountries.eu/rest"'
+            buildConfigField 'String', 'BASE_URL', '"https://restcountries.eu/rest/"'
             multiDexKeepProguard file('multidex-config.pro')
         }
 
         dev {
-            buildConfigField 'String', 'BASE_URL', '"https://restcountries.eu/rest"'
+            buildConfigField 'String', 'BASE_URL', '"https://restcountries.eu/rest/"'
             multiDexKeepProguard file('multidex-config.pro')
         }
     }
@@ -29,4 +30,8 @@ dependencies {
 
     implementation libraries.loggingInt
     implementation libraries.gsonConverter
+
+}
+repositories {
+    mavenCentral()
 }

@@ -2,17 +2,26 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.paninti.androidtestapp">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
+        android:name=".TestApp"
         android:allowBackup="true"
+        android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AndroidTestApp.NoActionBar">
-
+        android:theme="@style/Base.Dark.NoActionBar"
+        android:usesCleartextTraffic="true">
         <activity
             android:name=".MainActivity"
-            android:theme="@style/Theme.AndroidTestApp.FullScreen">
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SplashAct"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.FullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

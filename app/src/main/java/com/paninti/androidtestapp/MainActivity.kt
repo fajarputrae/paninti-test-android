@@ -1,11 +1,14 @@
 package com.paninti.androidtestapp
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.paninti.lib.base.activity.BaseAct
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseAct() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
     }
+
 }

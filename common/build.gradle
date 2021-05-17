@@ -1,0 +1,10 @@
+apply from: "$rootProject.rootDir/dependencies-common.gradle"
+apply plugin: 'kotlin-android'
+
+dependencies {
+    api libraries.appCompat
+    api libraries.design
+}
+repositories {
+    mavenCentral()
+}
